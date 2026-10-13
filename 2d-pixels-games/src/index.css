@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-pixel: "Galmuri11", monospace;
+  --color-neon-yellow: #facc15;
+  --color-neon-green: #4ade80;
+  --color-neon-sky: #38bdf8;
+  --color-neon-red: #f87171;
+  --color-win-gray: #c0c0c0;
+  --color-win-navy: #000080;
+}
+
+html,
+body {
+  background: #000;
+}
+
+body {
+  @apply font-pixel text-white antialiased;
+  image-rendering: pixelated;
+}
+
+/* 각진 픽셀 테두리 (계단형 모서리) */
+.pixel-border {
+  box-shadow:
+    0 -4px 0 0 currentColor,
+    0 4px 0 0 currentColor,
+    -4px 0 0 0 currentColor,
+    4px 0 0 0 currentColor;
+}
+
+.pixel-panel {
+  @apply bg-black text-white;
+  border: 4px solid #fff;
+  box-shadow: 6px 6px 0 0 #3f3f46;
+}
+
+/* 깜빡임 */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.animate-blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+/* 캐릭터 둥실둥실 (계단식 움직임) */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-bob {
+  animation: bob 1.6s steps(2) infinite;
+}
+
+/* ---------- Windows 98 ---------- */
+.win98 {
+  background: #c0c0c0;
+  color: #000;
+  border: 2px solid;
+  border-color: #fff #000 #000 #fff;
+  box-shadow: inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf;
+  padding: 3px;
+}
+.win98-title {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  @apply flex items-center justify-between px-1.5 py-1 text-sm font-bold;
+}
+.win98-btn {
+  background: #c0c0c0;
+  color: #000;
+  border: 2px solid;
+  border-color: #fff #000 #000 #fff;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+}
+.win98-btn:active {
+  border-color: #000 #fff #fff #000;
+  box-shadow: inset 1px 1px 0 #808080;
+}
+.win98-inset {
+  background: #fff;
+  border: 2px solid;
+  border-color: #808080 #fff #fff #808080;
+  box-shadow: inset 1px 1px 0 #000;
+}
